@@ -30,7 +30,7 @@ class PersonalFinanceApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomeScreen(),
-        '/add': (context) => const AddTransactionScreen(),
+        '/add': (context) => AddTransactionScreen(),
         '/stats': (context) => const StatsScreen(),
         '/detail': (context) => const TransactionDetailScreen(transactionId: '1'), // Placeholder, actual ID will be passed via onGenerateRoute
       },
