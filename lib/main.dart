@@ -24,14 +24,18 @@ class PersonalFinanceApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Personal Finance Tracker',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData.dark().copyWith(
+        colorScheme: ThemeData.dark().colorScheme.copyWith(
+          primary: Colors.blue,
+          secondary: Colors.blueAccent,
+        ),
+        scaffoldBackgroundColor: Colors.black,
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomeScreen(),
+        '/': (context) => HomeScreen(),
         '/add': (context) => AddTransactionScreen(),
-        '/stats': (context) => const StatsScreen(),
+        '/stats': (context) => StatsScreen(),
         '/detail': (context) => const TransactionDetailScreen(transactionId: '1'), // Placeholder, actual ID will be passed via onGenerateRoute
       },
       onGenerateRoute: (settings){
