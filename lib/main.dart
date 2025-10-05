@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart'
-;
-import "models/transaction.dart";
-import 'screens/home_screen.dart';
+;import 'screens/home_screen.dart';
 import 'screens/add_transaction.dart';
 import 'screens/stats_screen.dart';
 import 'screens/transaction_detail.dart';
+import 'package:get/get.dart';
+import 'Controller/TransactionController.dart';
 
 
 
 // Personal finance tracker (entering income and spending, looking into spending per category, showing statistics over time)
 Future<void> main() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    await Hive.initFlutter();
-    await Hive.openBox('storage');
-    runApp(const PersonalFinanceApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('storage');
+  Get.put(TransactionController());
+  runApp(const PersonalFinanceApp());
 }
 
 class PersonalFinanceApp extends StatelessWidget {
@@ -36,7 +37,7 @@ class PersonalFinanceApp extends StatelessWidget {
         '/': (context) => HomeScreen(),
         '/add': (context) => AddTransactionScreen(),
         '/stats': (context) => StatsScreen(),
-        '/detail': (context) => const TransactionDetailScreen(transactionId: '1'), // Placeholder, actual ID will be passed via onGenerateRoute
+        '/detail': (context) => const TransactionDetailScreen(transactionId: ''), // Placeholder, actual ID will be passed via onGenerateRoute
       },
       onGenerateRoute: (settings){
         if(settings.name != null && settings.name!.startsWith("/transaction/")){
