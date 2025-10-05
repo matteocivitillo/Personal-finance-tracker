@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
               constraints: BoxConstraints(maxWidth: maxContentWidth),
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 24.0), // margine inferiore
+                padding: const EdgeInsets.only(bottom: 24.0), // bottom margin
                 child: Column(
                   children: [
                     Expanded(

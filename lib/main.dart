@@ -37,17 +37,17 @@ class PersonalFinanceApp extends StatelessWidget {
         '/': (context) => HomeScreen(),
         '/add': (context) => AddTransactionScreen(),
         '/stats': (context) => StatsScreen(),
-        '/detail': (context) => const TransactionDetailScreen(transactionId: ''), // Placeholder, actual ID will be passed via onGenerateRoute
       },
-      onGenerateRoute: (settings){
-        if(settings.name != null && settings.name!.startsWith("/transaction/")){
-          final id = settings.name!.replaceFirst("/transaction/", "");
+      onGenerateRoute: (settings) {
+        if (settings.name == '/transactionDetail') {
+          final id = settings.arguments as String? ?? '';
           return MaterialPageRoute(
             builder: (context) => TransactionDetailScreen(transactionId: id),
+            settings: settings,
           );
         }
         return null;
-      }
+      },
     );
   }
 }

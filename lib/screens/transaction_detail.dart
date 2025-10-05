@@ -13,6 +13,7 @@ class TransactionDetailScreen extends StatelessWidget {
     final transaction = transactionController.allTransactions.firstWhereOrNull((tx) => tx.id == transactionId);
 
     if (transaction == null) {
+      // Transaction not found
       return Scaffold(
         appBar: AppBar(
           title: const Text('Transaction Detail'),
@@ -23,32 +24,54 @@ class TransactionDetailScreen extends StatelessWidget {
       );
     }
 
+    final size = MediaQuery.of(context).size;
+    final isDesktop = size.width >= 1100;
+    final isTablet = size.width >= 700 && size.width < 1100;
+    final isMobile = size.width < 700;
+    final horizontalPadding = isMobile ? 16.0 : isTablet ? 32.0 : 64.0;
+    final titleFont = isMobile ? 20.0 : isTablet ? 26.0 : 32.0;
+    final labelFont = isMobile ? 16.0 : isTablet ? 18.0 : 20.0;
+    final valueFont = isMobile ? 18.0 : isTablet ? 22.0 : 26.0;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Transaction Detail'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Description: ${transaction.description}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 16),
-            Text('Amount: €${transaction.amount.toStringAsFixed(2)}', style: const TextStyle(fontSize: 18)),
-            const SizedBox(height: 8),
-            Text('Category: ${transaction.category}', style: const TextStyle(fontSize: 18)),
-            const SizedBox(height: 8),
-            Text('Date: ${transaction.date.toLocal().toString().split(' ')[0]}', style: const TextStyle(fontSize: 18)),
-            const SizedBox(height: 8),
-            Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(
-                color: transaction.categoryColor,
-                shape: BoxShape.circle,
+      body: Center(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: isDesktop ? 700 : double.infinity),
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 32),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Transaction Details', style: TextStyle(fontSize: titleFont, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 32),
+              Row(
+                children: [
+                  Container(
+                    width: isMobile ? 32 : 48,
+                    height: isMobile ? 32 : 48,
+                    decoration: BoxDecoration(
+                      color: transaction.categoryColor,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Text(transaction.category, style: TextStyle(fontSize: valueFont, fontWeight: FontWeight.w600)),
+                ],
               ),
-            ),
-          ],
+              const SizedBox(height: 24),
+              Text('Description', style: TextStyle(fontSize: labelFont, fontWeight: FontWeight.bold)),
+              Text(transaction.description, style: TextStyle(fontSize: valueFont)),
+              const SizedBox(height: 16),
+              Text('Amount', style: TextStyle(fontSize: labelFont, fontWeight: FontWeight.bold)),
+              Text('€${transaction.amount.toStringAsFixed(2)}', style: TextStyle(fontSize: valueFont)),
+              const SizedBox(height: 16),
+              Text('Date', style: TextStyle(fontSize: labelFont, fontWeight: FontWeight.bold)),
+              Text(transaction.date.toLocal().toString().split(' ')[0], style: TextStyle(fontSize: valueFont)),
+            ],
+          ),
         ),
       ),
     );

@@ -5,14 +5,14 @@ import 'package:hive_flutter/hive_flutter.dart';
 class TransactionController extends GetxController {
   final box = Hive.box('storage');
 
-  // Variabile osservabile per la lista delle transazioni
+  // Observable variable for the list of transactions
   final RxList<TransactionModel> transactions = <TransactionModel>[].obs;
-  // Variabile osservabile per il totale
+  // Observable variable for the total amount
   final RxDouble totalAmount = 0.0.obs;
 
-  // Costruttore: inizializza lo stato dal database
+  // Constructor: initializes state from the database
   TransactionController() {
-    // Carica le transazioni dal box Hive solo come Map
+    // Loads transactions from the Hive box only as Map
     final stored = box.values;
     if (stored.isNotEmpty) {
       transactions.assignAll(
@@ -22,14 +22,14 @@ class TransactionController extends GetxController {
     }
   }
 
-  // Metodo per aggiungere una transazione
+  // Method to add a transaction
   void addTransaction(TransactionModel tx) {
     transactions.add(tx);
     totalAmount.value += tx.amount;
-    box.add(tx.toJson()); // Salva come Map per compatibilità
+    box.add(tx.toJson()); // Save as Map for compatibility
   }
 
-  // Metodo per rimuovere una transazione
+  // Method to remove a transaction
   void removeTransaction(TransactionModel tx) {
     int index = transactions.indexOf(tx);
     if (index != -1) {
@@ -39,7 +39,7 @@ class TransactionController extends GetxController {
     }
   }
 
-  // Getter per la lista e il totale
+  // Getters for the list and total
   List<TransactionModel> get allTransactions => transactions;
   double get total => totalAmount.value;
   

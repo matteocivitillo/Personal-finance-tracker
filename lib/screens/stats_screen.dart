@@ -5,7 +5,7 @@ import '../Controller/TransactionController.dart';
 import '../models/transaction.dart';
 import '../widgets/bar_chart.dart';
 
-// creare un grafico a barre che mostra le spese per categoria
+// create a bar chart that shows expenses by category
 class StatsScreen extends StatelessWidget {
   StatsScreen({super.key});
   final box = Hive.box('storage');
@@ -55,7 +55,7 @@ class StatsScreen extends StatelessWidget {
           final isMobile = width < 700;
           // Font scaling
           final titleFont = width < 400 ? 18.0 : width < 700 ? 22.0 : 28.0;
-          // Margini laterali responsive
+          // Responsive side margins
           final horizontalPadding = isMobile ? 8.0 : isTablet ? 16.0 : 32.0;
           Widget content = Column(
             crossAxisAlignment: CrossAxisAlignment.center,

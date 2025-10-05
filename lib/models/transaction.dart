@@ -14,7 +14,7 @@ class TransactionModel {
     required this.description,
     required this.date,
   }) : assert(categories.contains(category),
-      'Category must be one of: $categories'),
+      'Category must be one of: ${categories.join(', ')}'),
     category = category;
 
   static const List<String> categories = [
