@@ -12,8 +12,3 @@ The application is deployed at:
 2. **View Past Transactions**: The home screen displays a scrollable list of all your transactions. Click on any transaction to view its details.
 3. **View Statistics**: Click the "View Stats" button to see a bar chart summarizing your spending by category.
 4. **Responsive Layout**: The app automatically adapts its layout for desktop, tablet, and mobile screens, ensuring readability and usability everywhere.
-
----
-For any issues or feature requests, please open an issue on GitHub.
-# Personal-finance-tracker
-Personal Finance Tracker is a responsive Flutter web app that helps users manage income and expenses, organize them by category, and view simple statistics over time.
