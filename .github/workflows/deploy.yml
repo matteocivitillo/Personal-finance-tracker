@@ -1,0 +1,50 @@
+name: Deploy Flutter Web to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]   # Cambia se usi un altro branch
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "stable"
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Compute base href
+        id: base
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"         # nome-repo
+          if [[ "$REPO" =~ \.github\.io$ ]]; then
+            echo "BASE_HREF=/" >> $GITHUB_OUTPUT   # sito user/org: root
+          else
+            echo "BASE_HREF=/$REPO/" >> $GITHUB_OUTPUT  # project pages: /nome-repo/
+          fi
+
+      - name: Build Flutter Web (release)
+        run: |
+          flutter build web --release --web-renderer skwasm --base-href "${{ steps.base.outputs.BASE_HREF }}"
+
+      # SPA fix: evita 404 al refresh delle route (GoRouter/Navigator 2.0)
+      - name: SPA 404 workaround
+        run: cp build/web/index.html build/web/404.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/web
+          publish_branch: gh-pages
+          # Se usi un custom domain, decommenta:
+          # cname: esempio.miodominio.it
