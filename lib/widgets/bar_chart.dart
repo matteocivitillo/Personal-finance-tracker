@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../models/transaction.dart';
 
-// creare un grafico a barre che mostra le spese per categoria
 class CategoryBarChart extends StatelessWidget {
   final List<String> categories;
   final Map<String, double> expensesByCategory;
@@ -59,7 +58,7 @@ class CategoryBarChart extends StatelessWidget {
                       children: [
                         const SizedBox(height: 12),
                         Transform.rotate(
-                          angle: -0.785398, // -45° in radianti
+                          angle: -0.785398, 
                           child: text,
                         ),
                       ],
@@ -69,7 +68,7 @@ class CategoryBarChart extends StatelessWidget {
               }
               return const Text('');
              },
-             reservedSize: 60, // Increased for longer category names
+             reservedSize: 60,
            ),
          ),
          leftTitles: AxisTitles(

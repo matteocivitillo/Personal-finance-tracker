@@ -8,8 +8,6 @@ import 'package:get/get.dart';
 import 'Controller/TransactionController.dart';
 
 
-
-// Personal finance tracker (entering income and spending, looking into spending per category, showing statistics over time)
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();

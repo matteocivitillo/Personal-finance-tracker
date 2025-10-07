@@ -13,7 +13,7 @@ class FormWidget extends StatefulWidget {
 class _FormWidgetState extends State<FormWidget> {
   final amountController = TextEditingController();
   final descriptionController = TextEditingController();
-  final transactionController = Get.find<TransactionController>(); // già corretto, nessuna modifica necessaria
+  final transactionController = Get.find<TransactionController>(); 
   DateTime? selectedDate;
   String? selectedCategory;
 

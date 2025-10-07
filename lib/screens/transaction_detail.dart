@@ -13,7 +13,6 @@ class TransactionDetailScreen extends StatelessWidget {
     final transaction = transactionController.allTransactions.firstWhereOrNull((tx) => tx.id == transactionId);
 
     if (transaction == null) {
-      // Transaction not found
       return Scaffold(
         appBar: AppBar(
           title: const Text('Transaction Detail'),

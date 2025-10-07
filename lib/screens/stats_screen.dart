@@ -5,7 +5,6 @@ import '../Controller/TransactionController.dart';
 import '../models/transaction.dart';
 import '../widgets/bar_chart.dart';
 
-// create a bar chart that shows expenses by category
 class StatsScreen extends StatelessWidget {
   StatsScreen({super.key});
   final box = Hive.box('storage');
@@ -27,10 +26,10 @@ class StatsScreen extends StatelessWidget {
             height: appBarHeight,
             child: Padding(
               padding: EdgeInsets.fromLTRB(
-                isWide ? 32.0 : 8.0, // left
-                appBarHeight * 0.25,  // top
-                isWide ? 32.0 : 8.0, // right
-                0,                   // bottom
+                isWide ? 32.0 : 8.0, 
+                appBarHeight * 0.25,  
+                isWide ? 32.0 : 8.0, 
+                0,                   
               ),
               child: Text(
                 'Statistics',
@@ -53,9 +52,7 @@ class StatsScreen extends StatelessWidget {
           final isDesktop = width >= 1100;
           final isTablet = width >= 700 && width < 1100;
           final isMobile = width < 700;
-          // Font scaling
           final titleFont = width < 400 ? 18.0 : width < 700 ? 22.0 : 28.0;
-          // Responsive side margins
           final horizontalPadding = isMobile ? 8.0 : isTablet ? 16.0 : 32.0;
           Widget content = Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,12 +67,10 @@ class StatsScreen extends StatelessWidget {
               Expanded(
                 child: Obx(() {
                   final categories = TransactionModel.categories;
-                  // Initialize expenses map
                   final expensesByCategory = <String, double>{};
                   for (final cat in categories) {
                     expensesByCategory[cat] = 0.0;
                   }
-                  // Sum net amounts for each category
                   for (final transaction in transactionController.transactions) {
                     if (categories.contains(transaction.category)) {
                       expensesByCategory[transaction.category] = expensesByCategory[transaction.category]! + transaction.amount;

@@ -7,16 +7,6 @@ class TransactionModel {
   final String description;
   final DateTime date;
 
-  TransactionModel({
-    required this.id,
-    required this.amount,
-    required String category,
-    required this.description,
-    required this.date,
-  }) : assert(categories.contains(category),
-      'Category must be one of: ${categories.join(', ')}'),
-    category = category;
-
   static const List<String> categories = [
     'Supermarkets',
     'Transfers',
@@ -25,6 +15,16 @@ class TransactionModel {
     'Entertainment',
     'Household',
   ];
+
+  TransactionModel({
+    required this.id,
+    required this.amount,
+    required String category,
+    required this.description,
+    required this.date,
+  }) : assert(categories.contains(category),
+      'Category must be one of: $categories'),
+    category = category;
 
   static Map<String, Color> categoryColors = {
     'Supermarkets': Colors.blue,

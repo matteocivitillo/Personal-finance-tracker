@@ -53,35 +53,35 @@ class HomeScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 32),
                             isMobile
-                                ? Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      ElevatedButton.icon(
-                                        onPressed: () {
-                                          Navigator.pushNamed(context, '/add');
-                                        },
-                                        icon: const Icon(Icons.add),
-                                        label: const Text('Add Transaction'),
-                                        style: ElevatedButton.styleFrom(
-                                          padding: buttonPadding,
-                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                                        ),
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ElevatedButton.icon(
+                                      onPressed: () {
+                                        Navigator.pushNamed(context, '/add');
+                                      },
+                                      icon: const Icon(Icons.add),
+                                      label: const Text('Add Transaction'),
+                                      style: ElevatedButton.styleFrom(
+                                        padding: buttonPadding,
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                                       ),
-                                      const SizedBox(height: 16),
-                                      ElevatedButton.icon(
-                                        onPressed: () {
-                                          Navigator.pushNamed(context, '/stats');
-                                        },
-                                        icon: const Icon(Icons.bar_chart),
-                                        label: const Text('View Stats'),
-                                        style: ElevatedButton.styleFrom(
-                                          padding: buttonPadding,
-                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                                        ),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  ElevatedButton.icon(
+                                      onPressed: () {
+                                        Navigator.pushNamed(context, '/stats');
+                                      },
+                                      icon: const Icon(Icons.bar_chart),
+                                      label: const Text('View Stats'),
+                                      style: ElevatedButton.styleFrom(
+                                        padding: buttonPadding,
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                                       ),
-                                    ],
-                                  )
-                                : ButtonSection(buttonPadding: buttonPadding),
+                                    ),
+                                  ],
+                                )
+                              : ButtonSection(buttonPadding: buttonPadding),
                           ],
                         ),
                       ),

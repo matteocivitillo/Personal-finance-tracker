@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../Controller/TransactionController.dart';
 
 class PastTransactions extends StatelessWidget {
-  const PastTransactions({super.key}); // no controller parameter
+  const PastTransactions({super.key}); 
 
   @override
   Widget build(BuildContext context) {
