@@ -35,7 +35,7 @@ jobs:
 
       - name: Build Flutter Web (release)
         run: |
-          flutter build web --release --web-renderer skwasm --base-href "${{ steps.base.outputs.BASE_HREF }}"
+          flutter build web --release --base-href "${{ steps.base.outputs.BASE_HREF }}"
 
       # SPA fix: evita 404 al refresh delle route (GoRouter/Navigator 2.0)
       - name: SPA 404 workaround
