@@ -27167,7 +27167,7 @@ $S:2}
 A.ato.prototype={
 $1(a){var s=A.dx().b
 s=s==null?null:s.canvasKitBaseUrl
-return(s==null?"https://www.gstatic.com/flutter-canvaskit/d3d45dcf251823c1769909cd43698d126db38deb/":s)+a},
+return(s==null?"https://www.gstatic.com/flutter-canvaskit/d2913632a4578ee4d0b8b1c4a69888c8a0672c4b/":s)+a},
 $S:138}
 A.a1X.prototype={
 eO(a,b){var s,r=this.a
@@ -87099,7 +87099,7 @@ $1(a){return new A.vs(this.a,null)},
 $S:538}
 A.eS.prototype={
 hn(){var s=this
-return A.az(["amount",s.b,"category",s.c,"description",s.d,"date",s.e.apD()],t.N,t.z)}}
+return A.az(["id",s.a,"amount",s.b,"category",s.c,"description",s.d,"date",s.e.apD()],t.N,t.z)}}
 A.oP.prototype={
 ag(){$.iS()
 var s=$.hA
