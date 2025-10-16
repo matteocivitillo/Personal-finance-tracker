@@ -36,6 +36,7 @@ class TransactionModel {
   };
 
   Map<String, dynamic> toJson() => {
+    'id': id,
     'amount': amount,
     'category': category,
     'description': description,
